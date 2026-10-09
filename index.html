@@ -1,231 +1,47 @@
 <!DOCTYPE html>
-<html lang="th" class="dark">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiattikhun Hub - Key System</title>
+    <title>Kiattikhun Hub - Get Key</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: { 50: '#eef6ff', 100: '#e0edff', 500: '#007aff', 600: '#0062cc', 900: '#0b132b', accent: '#00f2fe' },
-                        darkbg: '#080a10', darkcard: 'rgba(18, 22, 36, 0.75)', borderglow: 'rgba(0, 242, 254, 0.2)'
-                    },
-                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #06080e;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(0, 122, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(0, 242, 254, 0.12) 0%, transparent 40%);
-            background-attachment: fixed;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .glass-panel {
-            background: rgba(15, 20, 32, 0.7);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-        .glow-button {
-            box-shadow: 0 0 20px rgba(0, 122, 255, 0.4);
-            transition: all 0.3s ease;
-        }
-        .glow-button:hover {
-            box-shadow: 0 0 30px rgba(0, 242, 254, 0.7);
-            transform: translateY(-2px);
-        }
-        .pulse-border { animation: pulseGlow 2.5s infinite alternate; }
-        @keyframes pulseGlow {
-            0% { border-color: rgba(0, 122, 255, 0.3); box-shadow: 0 0 10px rgba(0, 122, 255, 0.1); }
-            100% { border-color: rgba(0, 242, 254, 0.7); box-shadow: 0 0 25px rgba(0, 242, 254, 0.3); }
-        }
-    </style>
 </head>
-<body class="text-slate-200 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
-
-    <div id="toastContainer" class="fixed top-5 right-5 z-50 flex flex-col gap-3"></div>
-
-    <header class="w-full border-b border-slate-800/80 bg-slate-950/60 backdrop-blur-md sticky top-0 z-40">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-cyan-500/20">
-                    👑
-                </div>
-                <div>
-                    <h1 class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-white via-slate-200 to-cyan-400 bg-clip-text text-transparent">
-                        Kiattikhun Hub
-                    </h1>
-                    <p class="text-xs text-slate-400 font-mono">Official Roblox Key Gateway</p>
-                </div>
-            </div>
-            <div class="flex items-center gap-2 text-xs font-mono bg-slate-900/80 px-3 py-1.5 rounded-full border border-slate-800">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="text-slate-300">System Online</span>
-            </div>
-        </div>
-    </header>
-
-    <main class="max-w-4xl mx-auto px-4 py-10 w-full flex-1 flex flex-col justify-center items-center gap-8">
-        <div class="text-center max-w-xl">
-            <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-blue-500/10 text-cyan-400 rounded-full border border-cyan-500/20 inline-block mb-3">
-                Free Key Generator
-            </span>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2">
-                Get Your Access Key
-            </h2>
-            <p class="text-slate-400 text-sm md:text-base">
-                Complete the checkpoint system below to generate a valid key for Kiattikhun Hub Roblox Script.
-            </p>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
+    <div class="bg-gray-800 p-8 rounded-2xl shadow-2xl max-w-md w-full text-center border border-gray-700">
+        <h1 class="text-2xl font-bold mb-2 text-cyan-400">🚀 Kiattikhun Hub</h1>
+        <p class="text-gray-400 mb-6 text-sm">ระบบรับคีย์ประจำวัน (Key Gateway)</p>
+        
+        <div class="bg-gray-900 p-4 rounded-xl border border-gray-700 mb-6">
+            <p class="text-xs text-gray-500 mb-1">คีย์ของคุณวันนี้คือ:</p>
+            <div id="key-display" class="text-xl font-mono font-bold text-green-400 tracking-wider">กำลังสร้างคีย์...</div>
         </div>
 
-        <div class="w-full glass-panel rounded-2xl p-6 md:p-8 pulse-border relative overflow-hidden">
-            <div class="mb-8">
-                <div class="flex items-center justify-between mb-2">
-                    <span id="stepProgressText" class="text-xs font-bold font-mono text-cyan-400 uppercase tracking-wider">Step 1 of 2: Verification Checkpoint</span>
-                    <span id="timerBadge" class="hidden text-xs font-mono bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full border border-amber-500/30">
-                        <i class="fa-solid fa-hourglass-half mr-1"></i> <span id="timerText">10s</span>
-                    </span>
-                </div>
-                <div class="w-full bg-slate-800/80 h-2 rounded-full overflow-hidden p-0.5 border border-slate-700/50">
-                    <div id="progressBar" class="bg-gradient-to-r from-blue-500 to-cyan-400 h-full rounded-full w-1/2 transition-all duration-500"></div>
-                </div>
-            </div>
-
-            <div id="step1View" class="flex flex-col items-center py-4 text-center">
-                <div class="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400 text-2xl mb-4 shadow-inner">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-2">Initialize Verification</h3>
-                <p class="text-sm text-slate-400 max-w-md mb-6">
-                    Click the button below to start the short verification process.
-                </p>
-                <button id="startProcessBtn" onclick="startCheckpoint()" class="glow-button w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold rounded-xl flex items-center justify-center gap-2 text-base transition-all">
-                    <i class="fa-solid fa-key"></i> Get Key Now
-                </button>
-            </div>
-
-            <div id="step2View" class="hidden flex-col items-center py-4 text-center">
-                <div class="relative w-20 h-20 mb-4 flex items-center justify-center">
-                    <div class="absolute inset-0 rounded-full border-4 border-slate-800"></div>
-                    <div id="spinnerRing" class="absolute inset-0 rounded-full border-4 border-cyan-400 border-t-transparent animate-spin"></div>
-                    <span id="countdownNumber" class="text-2xl font-bold font-mono text-cyan-400">10</span>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-2" id="checkpointTitle">Verifying Request...</h3>
-                <p class="text-sm text-slate-400 max-w-md mb-6" id="checkpointDesc">
-                    Please wait while our gateway verifies your link connection. Do not close this page.
-                </p>
-                <button id="claimKeyBtn" disabled onclick="generateFinalKey()" class="w-full sm:w-auto px-8 py-3.5 bg-slate-800 text-slate-500 font-bold rounded-xl flex items-center justify-center gap-2 text-base cursor-not-allowed transition-all">
-                    <i class="fa-solid fa-lock"></i> Unlock Key
-                </button>
-            </div>
-
-            <div id="keyResultView" class="hidden flex-col gap-6 py-2">
-                <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg flex-shrink-0">
-                        <i class="fa-solid fa-circle-check"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-sm font-bold text-emerald-400">Key Generated Successfully!</h4>
-                        <p class="text-xs text-slate-300">Your key is active and ready to be used in Kiattikhun Hub.</p>
-                    </div>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-xs font-mono uppercase text-slate-400 tracking-wider flex justify-between">
-                        <span>Your Generated Key</span>
-                        <span class="text-cyan-400">Expires in 24 hours</span>
-                    </label>
-                    <div class="flex items-center gap-2">
-                        <div class="relative flex-1">
-                            <input id="keyOutput" type="text" readonly value="" class="w-full bg-slate-950/90 border border-slate-800 text-cyan-300 font-mono text-base md:text-lg font-bold rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500/50 select-all shadow-inner">
-                        </div>
-                        <button onclick="copyGeneratedKey()" class="glow-button px-5 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold rounded-xl flex items-center gap-2 whitespace-nowrap">
-                            <i class="fa-solid fa-copy"></i>
-                            <span class="hidden sm:inline">Copy Key</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="w-full border-t border-slate-800/60 bg-slate-950/80 py-6 text-center text-xs text-slate-500 font-mono">
-        <p>© 2026 Kiattikhun Hub System. All rights reserved.</p>
-    </footer>
+        <button onclick="copyKey()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-4 rounded-xl transition duration-200 shadow-lg">
+            คัดลอกคีย์ (Copy Key)
+        </button>
+        <p id="status" class="text-xs text-green-400 mt-3 hidden">คัดลอกคีย์เรียบร้อยแล้ว!</p>
+    </div>
 
     <script>
-        let countdownTimer = null;
-        let generatedKeyStore = "";
-
-        function showToast(message, type = 'success') {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            const bgColor = type === 'success' ? 'bg-slate-900 border-emerald-500/50 text-emerald-400' : 'bg-slate-900 border-rose-500/50 text-rose-400';
-            toast.className = `flex items-center gap-3 px-4 py-3 rounded-xl border ${bgColor} shadow-2xl text-sm font-bold backdrop-blur-md transition-all duration-300`;
-            toast.innerHTML = `<span>${message}</span>`;
-            container.appendChild(toast);
-            setTimeout(() => toast.remove(), 3000);
+        function generateTodayKey() {
+            const d = new Date();
+            const year = d.getUTCFullYear();
+            const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+            const day = String(d.getUTCDate()).padStart(2, '0');
+            
+            const code = (parseInt(year) * parseInt(month)) + (parseInt(day) * 88) + 5555;
+            return `KHUB-${year}${month}${day}-${code}`;
         }
 
-        function createFormattedKey() {
-            const date = new Date();
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-            const chars = 'ABCDEF0123456789';
-            let suffix = '';
-            for (let i = 0; i < 4; i++) {
-                suffix += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            return `KHUB-${year}${month}${day}-${suffix}`;
-        }
+        const todayKey = generateTodayKey();
+        document.getElementById('key-display').innerText = todayKey;
 
-        function startCheckpoint() {
-            document.getElementById('step1View').classList.add('hidden');
-            document.getElementById('step2View').classList.remove('hidden');
-            document.getElementById('step2View').classList.add('flex');
-            let timeLeft = 7;
-            const countdownEl = document.getElementById('countdownNumber');
-            countdownEl.innerText = timeLeft;
-            countdownTimer = setInterval(() => {
-                timeLeft--;
-                countdownEl.innerText = timeLeft;
-                if (timeLeft <= 0) {
-                    clearInterval(countdownTimer);
-                    const claimBtn = document.getElementById('claimKeyBtn');
-                    claimBtn.disabled = false;
-                    claimBtn.className = "glow-button w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-400 text-slate-950 font-extrabold rounded-xl flex items-center justify-center gap-2 text-base cursor-pointer";
-                    claimBtn.innerHTML = `Get Active Key Now`;
-                }
-            }, 1000);
-        }
-
-        function generateFinalKey() {
-            generatedKeyStore = createFormattedKey();
-            document.getElementById('step2View').classList.add('hidden');
-            document.getElementById('keyResultView').classList.remove('hidden');
-            document.getElementById('keyResultView').classList.add('flex');
-            document.getElementById('keyOutput').value = generatedKeyStore;
-            showToast("Key generated successfully!");
-        }
-
-        function copyGeneratedKey() {
-            const keyText = document.getElementById('keyOutput').value;
-            navigator.clipboard.writeText(keyText);
-            showToast("Key copied to clipboard!");
+        function copyKey() {
+            navigator.clipboard.writeText(todayKey);
+            const status = document.getElementById('status');
+            status.classList.remove('hidden');
+            setTimeout(() => status.classList.add('hidden'), 3000);
         }
     </script>
 </body>
-  </html>
-  
+</html>
